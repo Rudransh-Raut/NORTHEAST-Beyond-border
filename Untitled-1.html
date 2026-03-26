@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northeast Beyond Borders - Tours & Travel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER STYLES ===== */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: #000000;
+            z-index: 1000;
+            border-bottom: 2px solid #00E5FF;
+            padding: 2rem 2rem 1rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .branding {
+            margin-bottom: 1.5rem;
+        }
+
+        .main-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .sub-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: #00E5FF;
+            text-transform: uppercase;
+        }
+
+        /* ===== MARQUEE STYLES ===== */
+        .marquee-container {
+            background-color: #000000;
+            overflow: hidden;
+            padding: 1rem 0;
+            border-top: 1px solid #00E5FF;
+            border-bottom: 1px solid #00E5FF;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 2rem;
+            animation: marquee 10s linear infinite;
+            white-space: nowrap;
+            padding: 0 2rem;
+        }
+
+        .marquee-item {
+            font-size: 0.95rem;
+            color: #00E5FF;
+            font-weight: 500;
+            flex-shrink: 0;
+            letter-spacing: 1px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .state-section {
+            padding: 4rem 2rem;
+            border-bottom: 2px solid #00E5FF;
+        }
+
+        .state-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .state-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #00E5FF;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background-color: #00E5FF;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== CAROUSEL STYLES ===== */
+        .carousel-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .carousel-container {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 0.5rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: #00E5FF #1a1a1a;
+        }
+
+        /* Custom scrollbar for WebKit browsers */
+        .carousel-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .carousel-container::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb {
+            background: #00E5FF;
+            border-radius: 3px;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb:hover {
+            background: #00d4e6;
+        }
+
+        /* ===== CARD STYLES ===== */
+        .card {
+            flex-shrink: 0;
+            width: 280px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: #0a0a0a;
+            border: 1px solid #00E5FF;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .card-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00E5FF;
+            opacity: 0.3;
+            font-weight: 700;
+        }
+
+        .card-footer {
+            background-color: #00E5FF;
+            color: #000000;
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .place-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-info {
+            font-size: 0.8rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .card-info-line {
+            margin-bottom: 0.3rem;
+        }
+
+        /* ===== ARROW INDICATORS ===== */
+        .carousel-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+            padding: 0 0.5rem;
+            z-index: 10;
+        }
+
+        .arrow {
+            font-size: 1.8rem;
+            color: #00E5FF;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+            user-select: none;
+        }
+
+        .carousel-container:hover ~ .carousel-arrows .arrow {
+            opacity: 1;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-heading {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+
+            .state-title {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                width: 220px;
+            }
+
+            .place-name {
+                font-size: 0.9rem;
+            }
+
+            .card-info {
+                font-size: 0.75rem;
+            }
+
+            header {
+                padding: 1.5rem 1rem 0.8rem;
+            }
+
+            .state-section {
+                padding: 2rem 1rem;
+            }
+
+            .marquee-content {
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+            }
+
+            .sub-heading {
+                font-size: 0.8rem;
+                letter-spacing: 3px;
+            }
+
+            .state-title {
+                font-size: 1.2rem;
+            }
+
+            .card {
+                width: 180px;
+            }
+
+            .place-name {
+                font-size: 0.8rem;
+            }
+
+            .card-info {
+                font-size: 0.7rem;
+            }
+
+            .marquee-item {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ===== SCROLL INDICATOR ===== */
+        .scroll-hint {
+            text-align: center;
+            color: #00E5FF;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="branding">
+                <div class="main-heading">Northeast Beyond Borders</div>
+                <div class="sub-heading">Tours & Travel</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MARQUEE -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item">★ ASSAM: Kaziranga • Kamakhya • Majuli • Manas • Sivasagar • Hajo</span>
+            <span class="marquee-item">★ ARUNACHAL PRADESH: Tawang • Ziro Valley • Sela Pass • Namdapha • Ita Fort • Bomdila</span>
+            <span class="marquee-item">★ MEGHALAYA: Shillong Peak • Elephant Falls • Umiam Lake • Root Bridge • Dawki • Nohkalikai</span>
+            <span class="marquee-item">★ MANIPUR: Loktak Lake • Kangla Fort • Keibul Lamjao • INA Memorial • Govindajee • Ukhrul</span>
+            <span class="marquee-item">★ NAGALAND: Kohima War Cemetery • Kisama • Dzükou Valley • Khonoma • Kachari Ruins • Mokokchung</span>
+            <span class="marquee-item">★ TRIPURA: Ujjayanta Palace • Neermahal • Unakoti • Sepahijala • Tripura Sundari • Jampui Hills</span>
+            <span class="marquee-item">★ MIZORAM: Reiek Tlang • Solomon's Temple • Vantawng Falls • Hmuifang Tlang • Tam Dil • Phawngpui</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="marquee-item">★ ASSAM: Kaziranga • Kamakhya • Majuli • Manas • Sivasagar • Hajo</span>
+            <span class="marquee-item">★ ARUNACHAL PRADESH: Tawang • Ziro Valley • Sela Pass • Namdapha • Ita Fort • Bomdila</span>
+            <span class="marquee-item">★ MEGHALAYA: Shillong Peak • Elephant Falls • Umiam Lake • Root Bridge • Dawki • Nohkalikai</span>
+            <span class="marquee-item">★ MANIPUR: Loktak Lake • Kangla Fort • Keibul Lamjao • INA Memorial • Govindajee • Ukhrul</span>
+            <span class="marquee-item">★ NAGALAND: Kohima War Cemetery • Kisama • Dzükou Valley • Khonoma • Kachari Ruins • Mokokchung</span>
+            <span class="marquee-item">★ TRIPURA: Ujjayanta Palace • Neermahal • Unakoti • Sepahijala • Tripura Sundari • Jampui Hills</span>
+            <span class="marquee-item">★ MIZORAM: Reiek Tlang • Solomon's Temple • Vantawng Falls • Hmuifang Tlang • Tam Dil • Phawngpui</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- ASSAM SECTION -->
+        <section class="state-section">
+            <div class="section-header">
+                <div class="state-title">Assam</div>
+                <div class="section-divider"></div>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="card">
+                        <div class="card-image">🐘</div>
+                        <div class="card-footer">
+                            <div class="place-name">Kaziranga</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 4-6h</div>
+                                <div class="card-info-line">Distance: 0 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏛️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Kamakhya</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-4h</div>
+                                <div class="card-info-line">Distance: 5 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏝️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Majuli</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 5-7h</div>
+                                <div class="card-info-line">Distance: 14 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🦁</div>
+                        <div class="card-footer">
+                            <div class="place-name">Manas</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 4-6h</div>
+                                <div class="card-info-line">Distance: 22 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏰</div>
+                        <div class="card-footer">
+                            <div class="place-name">Sivasagar</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-5h</div>
+                                <div class="card-info-line">Distance: 2 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">⛩️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Hajo</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 0.5 km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-arrows">
+                    <span class="arrow">‹</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            <div class="scroll-hint">← Scroll to explore →</div>
+        </section>
+
+        <!-- ARUNACHAL PRADESH SECTION -->
+        <section class="state-section">
+            <div class="section-header">
+                <div class="state-title">Arunachal Pradesh</div>
+                <div class="section-divider"></div>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="card">
+                        <div class="card-image">🏯</div>
+                        <div class="card-footer">
+                            <div class="place-name">Tawang Monastery</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 2 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🌄</div>
+                        <div class="card-footer">
+                            <div class="place-name">Ziro Valley</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-5h</div>
+                                <div class="card-info-line">Distance: 1 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">⛰️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Sela Pass</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1-2h</div>
+                                <div class="card-info-line">Distance: 100 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🌲</div>
+                        <div class="card-footer">
+                            <div class="place-name">Namdapha</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 4-6h</div>
+                                <div class="card-info-line">Distance: 1 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏛️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Ita Fort</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 1.5 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏘️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Bomdila</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1.5-2h</div>
+                                <div class="card-info-line">Distance: 1 km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-arrows">
+                    <span class="arrow">‹</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            <div class="scroll-hint">← Scroll to explore →</div>
+        </section>
+
+        <!-- MEGHALAYA SECTION -->
+        <section class="state-section">
+            <div class="section-header">
+                <div class="state-title">Meghalaya</div>
+                <div class="section-divider"></div>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="card">
+                        <div class="card-image">⛰️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Shillong Peak</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1-2h</div>
+                                <div class="card-info-line">Distance: 10 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">💧</div>
+                        <div class="card-footer">
+                            <div class="place-name">Elephant Falls</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1.5-2h</div>
+                                <div class="card-info-line">Distance: 12 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏞️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Umiam Lake</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 17 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🌉</div>
+                        <div class="card-footer">
+                            <div class="place-name">Root Bridge</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 6-8h</div>
+                                <div class="card-info-line">Distance: 20 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🚤</div>
+                        <div class="card-footer">
+                            <div class="place-name">Dawki</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 82 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🌊</div>
+                        <div class="card-footer">
+                            <div class="place-name">Nohkalikai</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1-2h</div>
+                                <div class="card-info-line">Distance: 4 km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-arrows">
+                    <span class="arrow">‹</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            <div class="scroll-hint">← Scroll to explore →</div>
+        </section>
+
+        <!-- MANIPUR SECTION -->
+        <section class="state-section">
+            <div class="section-header">
+                <div class="state-title">Manipur</div>
+                <div class="section-divider"></div>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="card">
+                        <div class="card-image">🦆</div>
+                        <div class="card-footer">
+                            <div class="place-name">Loktak Lake</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-5h</div>
+                                <div class="card-info-line">Distance: 3 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏰</div>
+                        <div class="card-footer">
+                            <div class="place-name">Kangla Fort</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 2 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🌿</div>
+                        <div class="card-footer">
+                            <div class="place-name">Keibul Lamjao</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-4h</div>
+                                <div class="card-info-line">Distance: 5 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🎖️</div>
+                        <div class="card-footer">
+                            <div class="place-name">INA Memorial</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1.5-2h</div>
+                                <div class="card-info-line">Distance: 0.5 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🙏</div>
+                        <div class="card-footer">
+                            <div class="place-name">Govindajee Temple</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1h</div>
+                                <div class="card-info-line">Distance: 3 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏔️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Ukhrul</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 5-7h</div>
+                                <div class="card-info-line">Distance: 3 km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-arrows">
+                    <span class="arrow">‹</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            <div class="scroll-hint">← Scroll to explore →</div>
+        </section>
+
+        <!-- NAGALAND SECTION -->
+        <section class="state-section">
+            <div class="section-header">
+                <div class="state-title">Nagaland</div>
+                <div class="section-divider"></div>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="card">
+                        <div class="card-image">🪦</div>
+                        <div class="card-footer">
+                            <div class="place-name">Kohima War Cemetery</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1-2h</div>
+                                <div class="card-info-line">Distance: 1 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏘️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Kisama Village</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-4h</div>
+                                <div class="card-info-line">Distance: 12 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏔️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Dzükou Valley</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 8-12h</div>
+                                <div class="card-info-line">Distance: 25 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🌾</div>
+                        <div class="card-footer">
+                            <div class="place-name">Khonoma</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-4h</div>
+                                <div class="card-info-line">Distance: 20 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏛️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Kachari Ruins</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1-1.5h</div>
+                                <div class="card-info-line">Distance: 3 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏙️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Mokokchung</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 4-6h</div>
+                                <div class="card-info-line">Distance: 1 km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-arrows">
+                    <span class="arrow">‹</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            <div class="scroll-hint">← Scroll to explore →</div>
+        </section>
+
+        <!-- TRIPURA SECTION -->
+        <section class="state-section">
+            <div class="section-header">
+                <div class="state-title">Tripura</div>
+                <div class="section-divider"></div>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="card">
+                        <div class="card-image">🏛️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Ujjayanta Palace</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 1 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏰</div>
+                        <div class="card-footer">
+                            <div class="place-name">Neermahal</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 1 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🗿</div>
+                        <div class="card-footer">
+                            <div class="place-name">Unakoti</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-5h</div>
+                                <div class="card-info-line">Distance: 10 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🦜</div>
+                        <div class="card-footer">
+                            <div class="place-name">Sepahijala</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-5h</div>
+                                <div class="card-info-line">Distance: 33 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🙏</div>
+                        <div class="card-footer">
+                            <div class="place-name">Tripura Sundari Temple</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1-2h</div>
+                                <div class="card-info-line">Distance: 5 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">⛰️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Jampui Hills</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 4-6h</div>
+                                <div class="card-info-line">Distance: 30 km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-arrows">
+                    <span class="arrow">‹</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            <div class="scroll-hint">← Scroll to explore →</div>
+        </section>
+
+        <!-- MIZORAM SECTION -->
+        <section class="state-section">
+            <div class="section-header">
+                <div class="state-title">Mizoram</div>
+                <div class="section-divider"></div>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="card">
+                        <div class="card-image">⛰️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Reiek Tlang</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 3-5h</div>
+                                <div class="card-info-line">Distance: 29 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">⛪</div>
+                        <div class="card-footer">
+                            <div class="place-name">Solomon's Temple</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1-1.5h</div>
+                                <div class="card-info-line">Distance: 10 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">💧</div>
+                        <div class="card-footer">
+                            <div class="place-name">Vantawng Falls</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 1.5-2h</div>
+                                <div class="card-info-line">Distance: 5 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏔️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Hmuifang Tlang</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 1 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">🏞️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Tam Dil</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 2-3h</div>
+                                <div class="card-info-line">Distance: 10 km</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">⛰️</div>
+                        <div class="card-footer">
+                            <div class="place-name">Phawngpui</div>
+                            <div class="card-info">
+                                <div class="card-info-line">Time: 6-8h</div>
+                                <div class="card-info-line">Distance: 20 km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-arrows">
+                    <span class="arrow">‹</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            <div class="scroll-hint">← Scroll to explore →</div>
+        </section>
+    </main>
+</body>
+</html>
